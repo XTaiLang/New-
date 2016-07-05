@@ -1,0 +1,101 @@
+//
+//  PrefixHeader.pch
+//  百家"闻"坛
+//
+//  Created by lim on 16/2/18.
+//  Copyright © 2016年 lim. All rights reserved.
+//
+
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+//tabBar数量
+#define LM_TABBAR_COUNT 5
+
+#define LMScreenW [UIScreen mainScreen].bounds.size.width
+#define LMScreenH [UIScreen mainScreen].bounds.size.height
+
+//分类文件
+#import "UIView+Frame.h"
+#import "UIImage+Image.h"
+#import "UIBarButtonItem+Item.h"
+#import "NSDate+MJ.h"
+//cell
+#define LMStatusCellMargin 10
+#define LMNameFont [UIFont systemFontOfSize:13]
+#define LMTimeFont [UIFont systemFontOfSize:12]
+#define LMSourceFont LMTimeFont
+#define LMTextFont [UIFont systemFontOfSize:15]
+
+/** 精华-顶部标题的高度 */
+#define LMTitilesViewH 35;
+/** 精华-顶部标题的Y */
+#define LMTitilesViewY 64;
+
+/** 精华-cell-间距 */
+#define LMVideoCellMargin 10
+/** 精华-cell-文字内容的Y值 */
+#define LMVideoCellTextY 55
+/** 精华-cell-底部工具条的高度 */
+#define LMVideoCellBottomBarH 35
+
+#define LMKeyWindow [UIApplication sharedApplication].keyWindow
+
+// ...表示宏定义的可变参数
+// __VA_ARGS__:表示函数里面的可变参数
+#ifdef DEBUG // 调试
+
+#define LMLog(...) NSLog(__VA_ARGS__)
+
+#else // 发布
+
+#define LMLog(...)
+
+#endif
+
+// 获取首页内容接口地址
+#define URL_GET_HOME_CONTENT @"http://bea.wufazhuce.com/OneForWeb/one/getHp_N"
+// 获取文章接口地址
+#define URL_GET_READING_CONTENT @"http://bea.wufazhuce.com/OneForWeb/one/getOneContentInfo"
+// 获取问题接口地址
+#define URL_GET_QUESTION_CONTENT @"http://bea.wufazhuce.com/OneForWeb/one/getOneQuestionInfo"
+// 获取问题后援接口地址 (What the f**k! 日了狗了，试了几次不同日期，获取过来都是最新一天的(也就是今天))，没办法，只能显示一个官方的手机版网页了
+//#define URL_BACKUP_GET_QUESTION_CONTENT @"http://bea.wufazhuce.com/OneForWeb/one/getQ_N"
+// 获取东西接口地址
+#define URL_GET_THING_CONTENT @"http://bea.wufazhuce.com/OneForWeb/one/o_f"
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define RGBA(r,g,b,a)         [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#define RGB(r,g,b)            [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+#define BoldSystemFont(size)  [UIFont boldSystemFontOfSize:size]
+#define systemFont(size)      [UIFont systemFontOfSize:size]
+#define isIOS7                [[UIDevice currentDevice].systemVersion doubleValue]>=7.0?YES:NO
+#define isGreatThanIOS9       [[UIDevice currentDevice].systemVersion doubleValue]>=9.0
+#define SYSTEM_VERSION        [[[UIDevice currentDevice] systemVersion] floatValue]
+#define STATUSBAR_HEIGHT      [[UIApplication sharedApplication] statusBarFrame].size.height
+#define NAVBAR_HEIGHT         (44.f + ((SYSTEM_VERSION >= 7) ? STATUSBAR_HEIGHT : 0))
+// 屏幕高度
+#define SCREEN_HEIGHT         [[UIScreen mainScreen] bounds].size.height
+// 屏幕宽度
+#define SCREEN_WIDTH          [[UIScreen mainScreen] bounds].size.width
+#define FULL_WIDTH            SCREEN_WIDTH
+#define FULL_HEIGHT           (SCREEN_HEIGHT - ((SYSTEM_VERSION >= 7) ? 0 : STATUSBAR_HEIGHT))
+#define CONTENT_HEIGHT        (FULL_HEIGHT - NAVBAR_HEIGHT)
+
+// 获取 View 的 frame 的属性
+#define GetViewWidth(view)    view.frame.size.width
+#define GetViewHeight(view)   view.frame.size.height
+#define GetViewX(view)        view.frame.origin.x
+#define GetViewY(view)        view.frame.origin.y
+
+#define isGreatThanIOS9       [[UIDevice currentDevice].systemVersion doubleValue]>=9.0
+
+// common
+#define UserDefaults          [NSUserDefaults standardUserDefaults]
+
+#define IsStringEmpty(string) (!string || [@"" isEqualToString:string])
+#define IsStringNotEmpty(string) (string && ![@"" isEqualToString:string])
+
+#import "Constants.h"
+
+#endif /* PrefixHeader_pch */
